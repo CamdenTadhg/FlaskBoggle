@@ -1,0 +1,35 @@
+body{
+    background: black;
+}
+
+.game-name {
+    color: white;
+    font-size: 10rem;
+    text-align: center;
+    font-family: 'Itim';
+    animation: shrinkjump 1s ease-in-out;
+    transform: bottom left;
+    margin-bottom: 10px;
+}
+
+@keyframes shrinkjump {
+    10%, 35% {
+        transform: scale(2, .2) translate(0, 0);
+    }
+    45%, 50% {
+        transform: scale(1) translate(0, -150px);
+    }
+    80% {
+        transform: scale(1) translate(0, 0);
+    }
+}
+
+.start-button {
+    width: 30%;
+    position: absolute;
+    left: 35%;
+    height: 25%;
+    font-size: 8rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
