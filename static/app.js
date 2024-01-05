@@ -7,6 +7,7 @@ const $playAgain = $('#play-again');
 let score = 0;
 let timer;
 let timeLeft = 60;
+let entered = [];
 
 //on page load, start timer
 document.addEventListener('DOMContentLoaded', function() {
@@ -43,17 +44,24 @@ async function sendGuessToServer(word) {
         data: {guess: word}
     })
     console.log(response);
-    presentFeedback(response.data);
-    let score = incrementScore(word, response.data);
-    updateScore(score);
+    presentFeedback(response.data, word);
 }
 
 //Present appropriate feedback based on results of axios request
-function presentFeedback(result_dict) {
+function presentFeedback(result_dict, word) {
     if (result_dict['result'] === 'ok') {
-        const $good = $('<div class="good">');
-        $good.text('Good Job!');
-        $feedback.append($good);
+        if (checkDuplicate(word)){
+            const $duplicate = $('<div class="bad">');
+            $duplicate.text('Duplicate word');
+            $feedback.append($duplicate)
+        }
+        else {
+            let score = incrementScore(word, result_dict);
+            updateScore(score);
+            const $good = $('<div class="good">');
+            $good.text('Good Job!');
+            $feedback.append($good);
+        }
     }
     if (result_dict['result'] === 'not-on-board') {
         const $board = $('<div class="bad">');
@@ -65,6 +73,17 @@ function presentFeedback(result_dict) {
         $word.text("That's not a word!");
         $feedback.append($word);
         }
+    }
+
+//check if word has already been entered
+function checkDuplicate(word){
+    if (entered.includes(word)) {
+        return true;
+    }
+    else {
+        entered.push(word)
+        return false;
+    }
 }
 
 //increase score based on length of guess word

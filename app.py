@@ -43,16 +43,17 @@ def update_stats():
     print('Games played is ', session['games_played'])
     return jsonify({'result': 'score logged'})
 
-# 10 handle duplicate words so that the same word cannot be submitted twice
-# 9 redesign front end to be object oriented
-# 8 refactor anything else you can think of. 
-# 7 style application including different size screens
-# 6 create option to determine size of board (will require a form on the start page)
-# 5 create a hint feature which will highlight the first couple characters in a valid word that the user hasn't discovered yet
-# 4 write tests for all flask routes
+# 11 handle duplicate words so that the same word cannot be submitted twice
+# 10 redesign front end to be object oriented
+# 9 refactor anything else you can think of. 
+# 8 style application including different size screens
+# 7 create option to determine size of board (will require a form on the start page and a change to the boggle.py file)
+# 6 create a hint feature which will highlight the first couple characters in a valid word that the user hasn't discovered yet
+# 5 write tests for all flask routes
+# 4 write tests for all python functions
 # 3 write tests for all javascript functions
 # 2 run all tests
-# 1 remove console.log and other testing features
+# 1 remove console.log, print, and other testing features
 
 
 # January 4, 2024 - 
