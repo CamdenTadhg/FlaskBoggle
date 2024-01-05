@@ -2,8 +2,18 @@ const $guessInput = $('#guess-input');
 const $submitButton = $('.submit-button');
 const $feedback = $('.feedback-container');
 const $scoreContainer = $('.score-container');
+const $playAgain = $('#play-again');
 
 let score = 0;
+let timer;
+let timeLeft = 10;
+
+//on page load, start timer
+document.addEventListener('DOMContentLoaded', function() {
+    $playAgain.hide()
+    timer = setInterval(updateTimer, 1000);
+    updateTimer();
+})
 
 //on clicking in input box, clear previous input and remove previous feedback
 $guessInput.on('click', function(event){
@@ -13,14 +23,16 @@ $guessInput.on('click', function(event){
 })
 
 //on pressing submit, pull value from form and submit to server
-$submitButton.on('click', function(event){
-    console.log('submit button pressed');
-    $feedback.empty();
-    event.preventDefault();
-    let guess = $guessInput.val();
-    console.log('guess is ', guess)
-    sendGuessToServer(guess);
-})
+    $submitButton.on('click', function(event){
+        console.log('submit button pressed');
+        $feedback.empty();
+        event.preventDefault();
+        let guess = $guessInput.val();
+        console.log('guess is ', guess)
+        if (timeLeft > 0){
+            sendGuessToServer(guess);
+        }
+    })
 
 //submit guess to server for testing. Return feedback dictionary
 async function sendGuessToServer(word) {
@@ -69,4 +81,23 @@ function incrementScore(word, result_dict){
 function updateScore(number){
     console.log('entering updateScore')
     $scoreContainer.text(`Score: ${number}`);
+}
+
+//counts down a 60 second timer for game play
+function updateTimer(){
+    timeLeft = timeLeft - 1;
+    if (timeLeft >= 0){
+        $('#timer').text(`Timer: ${timeLeft}`);
+    }
+    else {
+        gameOver();
+    }
+}
+
+//stops timer countdown after time is up
+function gameOver(){
+    console.log('game over')
+    clearInterval(timer);
+    $('#timer').hide();
+    $playAgain.show();
 }
