@@ -33,3 +33,21 @@ body{
     border-radius: 50px;
     cursor: pointer;
 }
+
+.game-board {
+    color: white;
+    text-align: center;
+    font-size: 7.5rem;
+    font-family: 'Itim';
+}
+
+td {
+    width: 18vh;
+    height: 18vh;
+}
+
+table, th, td {
+    border: 1px white solid;
+    border-collapse: collapse;
+}
+

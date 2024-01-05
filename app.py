@@ -1,5 +1,5 @@
 from boggle import Boggle
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -17,23 +17,19 @@ def display_start():
 @app.route('/boggle')
 def play_boggle():
     """Return a page showing a boggle game board"""
-    return render_template('gameboard.html')
+    game_board = boggle_game.make_board()
+    session['game_board'] = game_board
+    return render_template('gameboard.html', game_board = game_board)
 
 
 
 
-
-# 1create start page
-# 2is it time to write tests? 
-# 3use Jinja to display boggle board on game board page
-# 4is it time to write tests? 
-# 5save board to session
-# 6is it time to write tests? 
-# 7create form to enter guess
-# 8is it time to write tests? 
-# 9use jquery to pull data from guess form
-# 10is it time to write tests? 
-# 11post guess to server using axios/ajax without refreshing page
+# 6 is it time to write tests? 
+# 7 create form to enter guess
+# 8 is it time to write tests? 
+# 9 use jquery to pull data from guess form
+# 10 is it time to write tests? 
+# 11 post guess to server using axios/ajax without refreshing page
 # 12is it time to write tests? 
 # 13on the server, check that it is a valid word in the dictionary
 # 14is it time to write tests? 
