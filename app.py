@@ -1,5 +1,5 @@
 from boggle import Boggle
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, jsonify, request
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -21,22 +21,16 @@ def play_boggle():
     session['game_board'] = game_board
     return render_template('gameboard.html', game_board = game_board)
 
+@app.route('/guess', methods = ['POST'])
+def check_guess():
+    """check if the submitted guess is valid"""
+    data = request.get_json()
+    guess = data['guess']
+    print(session['game_board'])
+    result = boggle_game.check_valid_word(session['game_board'], guess)
+    return jsonify({'result': result})
 
-
-
-# 6 is it time to write tests? 
-# 7 create form to enter guess
-# 8 is it time to write tests? 
-# 9 use jquery to pull data from guess form
-# 10 is it time to write tests? 
-# 11 post guess to server using axios/ajax without refreshing page
-# 12is it time to write tests? 
-# 13on the server, check that it is a valid word in the dictionary
-# 14is it time to write tests? 
-# 15check that the word is a valid word on the currnt board (check_valid_word function)
-# 16is it time to write tests? 
-# 17use jsonify function to respond to ajax request with json of dictionary
-# 18is it time to write tests? 
+# 18write tests for /guess route and axios app 
 # 19display feedback on guess for user on front end
 # 20is it time to write tests? 
 # 21create function to track score

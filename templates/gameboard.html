@@ -4,15 +4,29 @@
 
 {% block content %}
 <div class="flex-container">
-<table class="game-board">
-    {% for row in game_board %}
-    <tr>
-        {% for letter in row %}
-        <td>{{letter}}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
 
+    <div class="board-container">
+        <table class="game-board">
+            {% for row in game_board %}
+            <tr>
+                {% for letter in row %}
+                <td>{{letter}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="right-container">
+        <div class="form-container">
+            <form class="guess-form" method="post" action="#">
+                <label for="guess" class="guess-label">Enter a word: </label>
+                <input type="text" name="guess" id="guess-input">
+                <button class="submit-button" id="submit-button">Submit</button>
+            </form>
+        </div>
+        <div class="feedback-container" id="feedback-container"><div class="good">Good Job</div></div>
+        <div class="score-container"></div>
+    </div>
 </div>
 {% endblock %}
