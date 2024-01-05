@@ -29,23 +29,30 @@ def check_guess():
     result = boggle_game.check_valid_word(session['game_board'], guess)
     return jsonify({'result': result})
 
-# create display for score and update appropriately
-     #current stuck on why my update score function isn't being called properly
-# create timer to only allow 60 seconds of play time
-# disable future guesses when 60 seconds has passed
-# display countdown timer
-# send Ajax request to server upon game end with score and increment on number of times played (use request.json)
-     # use pdb to set a breakpoint and examine request.json. it's structure is different
-# redesign front end to be object oriented
-# ensure docstrings for all view functions
-# handle duplicate words so that the same word cannot be submitted twice
-# refactor anything else you can think of. 
-# style application including different size screens
-# create option to determine size of board (will require a form on the start page)
-# create a hint feature which will highlight the first couple characters in a valid word that the user hasn't discovered yet
-# WRITE TESTS!!
-# run all tests again
-# remove console.log and other testing features
+@app.route('/gameover', methods = ['POST'])
+def update_stats():
+    """update game play stats in the session"""
+    data = request.get_json()
+    current_score = data['score']
+    high_score = session.get('high_score', 0)
+    if current_score > high_score:
+        session['high_score'] = current_score
+    session['games_played'] = session.get('games_played', 0) + 1
+    print('************************')
+    print('High score is ', session['high_score'])
+    print('Games played is ', session['games_played'])
+    return jsonify({'result': 'score logged'})
+
+# 10 handle duplicate words so that the same word cannot be submitted twice
+# 9 redesign front end to be object oriented
+# 8 refactor anything else you can think of. 
+# 7 style application including different size screens
+# 6 create option to determine size of board (will require a form on the start page)
+# 5 create a hint feature which will highlight the first couple characters in a valid word that the user hasn't discovered yet
+# 4 write tests for all flask routes
+# 3 write tests for all javascript functions
+# 2 run all tests
+# 1 remove console.log and other testing features
 
 
 # January 4, 2024 - 

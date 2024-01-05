@@ -6,7 +6,7 @@ const $playAgain = $('#play-again');
 
 let score = 0;
 let timer;
-let timeLeft = 10;
+let timeLeft = 60;
 
 //on page load, start timer
 document.addEventListener('DOMContentLoaded', function() {
@@ -98,6 +98,18 @@ function updateTimer(){
 function gameOver(){
     console.log('game over')
     clearInterval(timer);
+    sendScoreToServer(score);
     $('#timer').hide();
     $playAgain.show();
+}
+
+//submit score to server. 
+async function sendScoreToServer(number) {
+    console.log('entering send score function');
+    const response = await axios ({
+        method: "POST", 
+        url: '/gameover',
+        data: {score: number}
+    })
+    console.log(response);
 }
