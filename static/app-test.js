@@ -1,4 +1,9 @@
 describe('input form callback function tests', function() {
+    afterEach(function(){
+        const guessInput = document.getElementById('guess-input');
+        guessInput.value = '';
+    })
+
     it('should clear the input box when the user clicks in it', function() {
         const guessInput = document.getElementById('guess-input');
         guessInput.value = 'brita';
@@ -18,6 +23,11 @@ describe('input form callback function tests', function() {
 })
 
 describe('submit button callback function tests', function(){
+    afterEach(function(){
+        const guessInput = document.getElementById('guess-input');
+        guessInput.value = '';
+    })
+
     it('should pull the correct value from the input box', function() {
         const guessInput = document.getElementById('guess-input');
         guessInput.value = 'brita';
@@ -46,8 +56,8 @@ describe('sendGuessToServer tests', function() {
     })
 })
 
-// describe('presentFeedback tests', function() {
-//     it('should display the right feedback based on the results dictionary', function() {
-//         expect()
-//     })
-// })
+describe('presentFeedback tests', function() {
+    it('should display the right feedback based on the results dictionary', function() {
+        expect()
+    })
+})

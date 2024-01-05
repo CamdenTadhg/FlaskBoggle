@@ -1,6 +1,9 @@
 const $guessInput = $('#guess-input');
 const $submitButton = $('.submit-button');
 const $feedback = $('.feedback-container');
+const $scoreContainer = $('.score-container');
+
+let score = 0;
 
 //on clicking in input box, clear previous input and remove previous feedback
 $guessInput.on('click', function(event){
@@ -29,6 +32,8 @@ async function sendGuessToServer(word) {
     })
     console.log(response);
     presentFeedback(response.data);
+    let score = incrementScore(word, response.data);
+    updateScore(score);
 }
 
 //Present appropriate feedback based on results of axios request
@@ -47,5 +52,21 @@ function presentFeedback(result_dict) {
         const $word = $('<div class="bad">');
         $word.text("That's not a word!");
         $feedback.append($word);
+        }
+}
+
+//increase score based on length of guess word
+function incrementScore(word, result_dict){
+    console.log('entering increment score');
+    if (result_dict['result'] === 'ok'){
+        score += word.length;
+        console.log(score);
     }
+    return score;
+}
+
+//update on-screen score
+function updateScore(number){
+    console.log('entering updateScore')
+    $scoreContainer.text(`Score: ${number}`);
 }

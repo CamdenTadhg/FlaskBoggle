@@ -1,5 +1,6 @@
 body{
     background: black;
+    color: white;
 }
 
 .game-name {
@@ -88,7 +89,7 @@ input {
     width: 50%;
 }
 
-.right-container, .board-container, .form-container, .score-container, .feedback-container {
+.right-container, .board-container, .form-container, .score-container, .feedback-container, .timer-container{
     border: solid 1px white;
 }
 
@@ -121,12 +122,21 @@ input {
     color: white;
     font-family: 'Itim';
     font-size: 4rem;
-    height: 30vh;
+    height: 15vh;
     width: 100%;
+    text-align: center;
 }
 
 .form-container {
     height: 44vh;
+}
+
+.timer-container {
+    font-family: 'Itim';
+    font-size: 4rem;
+    height: 15vh;
+    width: 100%;
+    text-align: center;
 }
 
 .good {
