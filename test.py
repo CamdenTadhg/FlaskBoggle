@@ -36,8 +36,7 @@ class FlaskTests(TestCase):
                 data = response.get_json()
 
                 self.assertEqual(response.status_code, 200)
-                self.assertTrue('result' in data)
-                self.assertTrue('ok' in data)
+                self.assertEqual(data, {'result': 'ok'})
 
     def test_guess_not_word(self):
         with app.test_client() as client:
@@ -52,8 +51,7 @@ class FlaskTests(TestCase):
                 data = response.get_json()
 
                 self.assertEqual(response.status_code, 200)
-                self.assertTrue('result' in data)
-                self.assertTrue('not-word' in data)
+                self.assertEqual(data, {'result': 'not-word'})
 
     def test_guess_not_board(self):
         with app.test_client() as client:
@@ -68,5 +66,19 @@ class FlaskTests(TestCase):
                 data = response.get_json()
 
                 self.assertEqual(response.status_code, 200)
-                self.assertTrue('result' in data)
-                self.assertTrue('not-on-board' in data)
+                self.assertEqual(data, {'result': 'not-on-board'})
+    
+    def test_game_over(self):
+        with app.test_client() as client:
+            test_data = {'score': 250}
+            response = client.post('/gameover', json=test_data)
+            data = response.get_json()
+            print(data)
+
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(data, {'result': 'score logged'})
+            self.assertEqual(session['high_score'], 250)
+            self.assertTrue(session['games_played'])
+        
+        with client.session_transaction() as change_session:
+            change_session['high_score'] = 51
