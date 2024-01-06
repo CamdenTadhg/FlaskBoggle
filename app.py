@@ -44,14 +44,11 @@ def update_stats():
     return jsonify({'result': 'score logged'})
 
 
-# 11 deal with what happens if you hit submit without entering a word
-# 10 write tests for all javascript functions
-# 9 refactor anything else you can think of. 
-# 8 style application including different size screens
 # 7 create option to determine size of board (will require a form on the start page and a change to the boggle.py file)
-# 5 write tests for new functionality
-# 4 create a hint feature which will highlight the first couple characters in a valid word that the user hasn't discovered yet
-# 3 write tests for new functionality
+# 6 write tests for new functionality
+# 5 create a hint feature which will highlight the first couple characters in a valid word that the user hasn't discovered yet
+# 4 write tests for new functionality
+# 3 write tests for all javascript functions
 # 2 run all tests
 # 1 remove console.log, print, and other testing features
 

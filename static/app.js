@@ -28,7 +28,12 @@ $guessInput.on('click', function(event){
         event.preventDefault();
         let guess = $guessInput.val();
         console.log('guess is ', guess)
-        if (currentGame.timeLeft > 0){
+        if (currentGame.timeLeft > 0 && guess != ''){
             currentGame.sendGuessToServer(guess);
+        }
+        if (guess === ''){
+            const $noword = $('<div class="bad">');
+            $noword.text('Please enter a word');
+            $feedback.append($noword);
         }
     })

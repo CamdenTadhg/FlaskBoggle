@@ -38,7 +38,7 @@ body{
 .game-board {
     color: white;
     text-align: center;
-    font-size: 7.5rem;
+    font-size: 7.5vw;
     font-family: 'Rubik Doodle Shadow';
     margin-left: 5%;
 }
@@ -71,26 +71,23 @@ table, th, td {
     justify-content: center;
     align-items: center;
     font-family: 'Rubik Doodle Shadow';
-    font-size: 4rem;
+    font-size: 4vw;
     margin: 0% 20% 0% 20%;
 }
 
 input {
     width: 100%;
     padding: 10px;
-    font-size: 4rem;
+    font-size: 4vw;
     font-family: 'Rubik Doodle Shadow';
-    margin: 10px;
+    margin: 3%;
     text-transform: uppercase;
 }
 
 .right-container, .board-container {
-    width: 50%;
+    width: 50vw;
 }
 
-.right-container, .board-container, .form-container, .score-container, .feedback-container, .timer-container{
-    border: solid 1px white;
-}
 
 .right-container {
     display: flex;
@@ -100,7 +97,7 @@ input {
 }
 
 .submit-button, #play-again{
-    font-size: 3.5rem;
+    font-size: 3.5vw;
     border-radius: 50px;
     cursor: pointer;
     margin: 10px;
@@ -110,7 +107,7 @@ input {
 .feedback-container {
     color: white;
     font-family: 'Rubik Doodle Shadow';
-    font-size: 4rem;
+    font-size: 4vw;
     height: 10vh;
     width: 100%;
     margin: 5% 0%;
@@ -120,7 +117,7 @@ input {
 .score-container {
     color: white;
     font-family: 'Rubik Doodle Shadow';
-    font-size: 4rem;
+    font-size: 4vw;
     height: 15vh;
     width: 100%;
     text-align: center;
@@ -132,7 +129,7 @@ input {
 
 .timer-container {
     font-family: 'Rubik Doodle Shadow';
-    font-size: 4rem;
+    font-size: 4vw;
     height: 15vh;
     width: 100%;
     text-align: center;
@@ -144,4 +141,39 @@ input {
 
 .bad {
     color: red;
+}
+
+@media (max-width: 600px){
+    .flex-container {
+        display: block;
+    } 
+
+    .right-container, .board-container {
+        width: 100vw;
+    }
+
+    td {
+        width: 10vh;
+        height: 10vh;
+    }
+
+    .game-board {
+        margin-left: 18%;
+    }
+
+    .score-container{
+        height:5vh;
+    }
+
+    .timer-container{
+        height: 5vh;
+    }
+
+    .feedback-container{
+        height: 5vh;
+    }
+
+    .form-container {
+        height: 20vh;
+    }
 }

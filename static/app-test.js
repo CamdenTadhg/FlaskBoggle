@@ -61,3 +61,48 @@ describe('presentFeedback tests', function() {
         expect()
     })
 })
+
+describe('checkDuplicate tests', function(){
+    it('should return false if a word is new'), function(){
+        expect()
+    }
+    it('should add the word to the entered array if it is new'), function(){
+        expect()
+    }
+    it('should return true if a word has been used before'), function(){
+        expect()
+    }
+})
+
+describe('incrementScore tests', function(){
+    it('should return the correct score when a new word is entered'), function(){
+        expect()
+    }
+})
+
+describe('updateScore tests', function(){
+    it('should update the score on the screen'), function(){
+        expect()
+    }
+})
+
+describe('sendScoreToServer tests', function(){
+    it('should receive a response from the axios post request', function(){
+        expect()
+    })
+})
+
+describe('gameOver tests', function(){
+    it('should show the play again button when the game is over', function(){
+        expect()
+    })
+})
+
+describe('updateTimer test', function(){
+    it('should decrement timer when called', function(){
+        expect()
+    })
+    it('should call game over if the time is up', function(){
+        expect()
+    })
+})
