@@ -102,12 +102,8 @@ class BoggleGame {
 
     //update available time left
     updateTimer() {
-        console.log('running updateTimer');
-        console.log(`time left is ${this.timeLeft}`);
         this.timeLeft = this.timeLeft - 1;
-        console.log(`timeLeft is ${this.timeLeft}`);
         if (this.timeLeft > 0){
-            console.log('You still have time left');
             $('#timer').html(`Timer: ${this.timeLeft}`)
         }
         else {

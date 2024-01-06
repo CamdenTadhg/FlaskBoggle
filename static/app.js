@@ -10,8 +10,7 @@ const currentGame = new BoggleGame();
 //on page load, start timer
 document.addEventListener('DOMContentLoaded', function() {
     $playAgain.hide()
-    timer = setInterval(currentGame.updateTimer, 1000);
-    timer2 = setInterval(console.log('hi'), 100);
+    timer = setInterval(() => currentGame.updateTimer(), 1000);
     currentGame.updateTimer();
 })
 
@@ -24,7 +23,6 @@ $guessInput.on('click', function(event){
 
 //on pressing submit, pull value from form and submit to server
     $submitButton.on('click', function(event){
-        clearInterval(timer2);
         console.log('submit button pressed');
         $feedback.empty();
         event.preventDefault();
